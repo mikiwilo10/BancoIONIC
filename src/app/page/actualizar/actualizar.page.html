@@ -1,0 +1,113 @@
+<app-header></app-header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Actualizar</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Editar Perfil
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-row>
+    <ion-col col-12>
+        <div class="photo">
+            <div class="image">
+                <img class="avatar" src="https://image.flaticon.com/icons/svg/1931/1931286.svg">
+            </div>
+        </div>
+    </ion-col>
+</ion-row>
+
+
+<!-- <ion-content>
+  <form>
+      <ion-list>
+
+
+          <ion-item>
+              <ion-icon name="mail"></ion-icon>
+              <ion-label>Correo :</ion-label>
+              <ion-input type="email" placeholder="Email" [(ngModel)]="datos.usuario"></ion-input>
+          </ion-item>
+
+          <div>
+              <ion-item>
+                  <ion-icon name="eye" item-start></ion-icon>
+                  <ion-label stacked>Contraseña:</ion-label>
+                  <ion-input type="password" placeholder="Nueva Contraseña" [(ngModel)]="datos.clave"></ion-input>
+              </ion-item>
+
+          </div>
+
+
+          <ion-button type="submit" expand="block" (click)="login()">Guardar</ion-button>
+
+      </ion-list>
+
+
+
+  </form>
+</ion-content> 
+
+<ion-grid>
+  <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+          <div padding>
+              <ion-item>
+
+                  <ion-input type="text" value="" [(ngModel)]="datos.usuario" placeholder="Username"></ion-input>
+              </ion-item>
+
+              <ion-item>
+
+                  <ion-input type="password" value="" [(ngModel)]="datos.clave" placeholder="Password"></ion-input>
+              </ion-item>
+          </div>
+
+          <div padding>
+              <ion-button size="large" (click)="login()" expand="block">Login</ion-button>
+          </div>
+      </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+-->
+
+<ion-content>
+    <ion-grid>
+        <ion-row justify-content-center>
+            <ion-col size="12" size-md="3">
+                <ion-avatar>
+
+                </ion-avatar>
+
+            </ion-col>
+            <ion-col size="12" size-md="9">
+                <h2>
+
+                </h2>
+                <ion-item>
+
+                    <ion-input type="text" value="" [(ngModel)]="datos.usuario" placeholder="Username"></ion-input>
+                </ion-item>
+                <ion-item>
+
+                    <ion-input type="password" value="" [(ngModel)]="datos.clave" placeholder="Password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <div padding>
+                            <ion-button size="large" (click)="login()" expand="block">Login</ion-button>
+                        </div>
+                    </ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
