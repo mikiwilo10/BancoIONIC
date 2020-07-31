@@ -43,6 +43,10 @@ ion-menu.md ion-list#labels-list ion-list-header {
   min-height: 26px;
 }
 
+ion-list-header{
+  position: center;
+}
+
 ion-menu.md ion-item {
   --padding-start: 10px;
   --padding-end: 10px;

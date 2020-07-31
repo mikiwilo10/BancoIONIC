@@ -90,8 +90,8 @@
 
         <ion-slides pager="true">
             <ion-slide>
-                <div class="slider-img">
-                    <img
+                <div text-center class="slider-img">
+                    <img width="100px"
                         src="https://image.flaticon.com/icons/svg/1931/1931286.svg">
                 </div>
     
@@ -112,19 +112,19 @@
                     <ion-icon name="mail" item-start></ion-icon>
                     <ion-input type="text" value="" [(ngModel)]="usuario"
                         pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                        clearInput placeholder="Correo"></ion-input>
+                        clearInput placeholder=" Correo"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <ion-input type="password" value="" [(ngModel)]="clave"
-                        placeholder="Clave" clearInput required></ion-input>
+                        placeholder=" Clave" clearInput required></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>
 
                         <ion-button
 
-                            size="large" (click)="presentAlert()"
+                            size="large" (click)="actualizarClave()"
                             mode="ios"
                             class="btn-primary"
                             shape="round"

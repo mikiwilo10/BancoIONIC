@@ -12,9 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ActualizarPage implements OnInit {
 
-  usuario:string;
+  usuario:string='';
   //email:string
-  clave:string;
+  clave:string='';
   // ip:string = "192.168.1.12:8080";
   ip:string = "localhost:8080";
   dat:String;
@@ -36,11 +36,11 @@ export class ActualizarPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Actualizar Contrasena',
+      header: 'Actualizar Contraseña',
       message: 'Esta Seguro de Realizar el Cambio?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -52,17 +52,17 @@ export class ActualizarPage implements OnInit {
         }, {
           text: 'Aceptar',
           handler: () => {
-            if (this.usuario == '' || this.clave == '') {
-              console.log('no hay valores');
-              this.usuario='';
-              this.clave='';
+            // if (this.usuario == '' || this.clave == '') {
+            //   console.log('no hay valores');
+            //   this.usuario='';
+            //   this.clave='';
               
-            } else {
-            console.log('Confirm Okay');
+            // } else {
+             console.log('Confirm Okay');
             this.actualizar();
-            this.usuario='';
-              this.clave='';
-            }
+           this.usuario='';
+               this.clave='';
+            // }
           
           }
         }
@@ -74,18 +74,18 @@ export class ActualizarPage implements OnInit {
   public actualizar() {
   
     return new Promise(resolve => {
-      
+
       this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
       console.log(data);  
      
-      if (data =! null) {
-          this.presentAlert();
-          this.router.navigate(['/cuenta']);
-          console.log("aui");  
-        } else {
-          this.router.navigate(['/cuenta']);
-          console.log("toy");  
-        }
+      // if (data =! null) {
+      //     this.presentAlert();
+      //     this.router.navigate(['/cuenta']);
+      //     console.log("aui");  
+      //   } else {
+      //     this.router.navigate(['/cuenta']);
+      //     console.log("toy");  
+      //   }
 
         
       }, () => {
@@ -99,5 +99,36 @@ export class ActualizarPage implements OnInit {
     console.log("formulario");
   }
 
+  actualizarClave(){
+    if (this.usuario == '' || this.clave == '') {
+      console.log('no hay valores');
+      this.usuario='';
+      this.clave='';
+      this.cancelar();
 
+    } else {
+       this.presentAlert();
+      // this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
+      //   console.log(data);  
+       
+      // });
+    //console.log('Confirm Okay');
+   // this.actualizar();
+    // this.usuario='';
+    //   this.clave='';
+    }
+
+   
+  }
+
+
+  async cancelar() {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: 'Debe llenar todos los campos',
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+  }
 }
