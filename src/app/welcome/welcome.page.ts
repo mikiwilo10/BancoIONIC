@@ -16,7 +16,7 @@ export class WelcomePage implements OnInit {
 
     setTimeout(() => {
     this.router.navigateByUrl('login');
-    },4000);
+    },400);
   }
 
 }

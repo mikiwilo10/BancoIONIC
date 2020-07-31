@@ -1,18 +1,26 @@
-<app-header></app-header>
+
 <!-- <ion-header>
   <ion-toolbar>
     <ion-title>Actualizar</ion-title>
   </ion-toolbar>
 </ion-header> -->
 
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title>
             Editar Perfil
         </ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Editar Perfil</ion-title>
+    </ion-toolbar>
+</ion-header>
 
 
 <!-- <ion-content>
@@ -72,35 +80,129 @@
 -->
 
 <ion-content>
+
+  
+
+
+
     <ion-grid>
+
+
+        <ion-slides pager="true">
+            <ion-slide>
+                <div class="slider-img">
+                    <img
+                        src="https://image.flaticon.com/icons/svg/1931/1931286.svg">
+                </div>
+    
+            </ion-slide>
+        </ion-slides>
+
         <ion-row justify-content-center>
-            <ion-col size="12" size-md="3">
-                <ion-avatar>
-                    <img class="avatar" src="https://image.flaticon.com/icons/svg/1931/1931286.svg">
 
-                </ion-avatar>
 
-            </ion-col>
+
+
+
             <ion-col size="12" size-md="9">
                 <h2>
 
                 </h2>
                 <ion-item>
-
-                    <ion-input type="text" value="" [(ngModel)]="datos.usuario" placeholder="Username"></ion-input>
+                    <ion-icon name="mail" item-start></ion-icon>
+                    <ion-input type="text" value="" [(ngModel)]="usuario"
+                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                        clearInput placeholder="Correo"></ion-input>
                 </ion-item>
                 <ion-item>
-
-                    <ion-input type="password" value="" [(ngModel)]="datos.clave" placeholder="Password"></ion-input>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <ion-input type="password" value="" [(ngModel)]="clave"
+                        placeholder="Clave" clearInput required></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        <div padding>
-                            <ion-button size="large" (click)="login()" expand="block">Login</ion-button>
-                        </div>
+
+                        <ion-button
+
+                            size="large" (click)="presentAlert()"
+                            mode="ios"
+                            class="btn-primary"
+                            shape="round"
+                            expand="full">Actualizar</ion-button>
+
                     </ion-label>
                 </ion-item>
             </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
+
+
+<!-- 
+<ion-content>
+
+    <ion-slides pager="true">
+        <ion-slide>
+            <div class="slider-img">
+                <img
+                    src="https://image.flaticon.com/icons/svg/1931/1931286.svg">
+            </div>
+
+        </ion-slide>
+    </ion-slides>
+
+
+    <form #formulario="ngForm" (ngSubmit)="sendMessage()">
+        <ion-list>
+
+
+            <ion-list-header>
+                <ion-label>Formulario:Valido {{formulario.valid}}</ion-label>
+               
+            </ion-list-header>
+
+
+            <ion-item>
+                <ion-icon name="mail" item-start></ion-icon>
+               
+                <ion-input type="email" 
+                name="correos"
+                [(ngModel)]="persona.correos"
+                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                
+                required
+                placeholder=" Correo">
+            </ion-input>
+            
+        </ion-item>
+
+
+            <ion-item>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <ion-input 
+                type="password" 
+               name="pass"
+                [(ngModel)]="persona.pass"
+                placeholder=" Clave" 
+                clearInput 
+                required></ion-input>
+            </ion-item>
+           
+           
+            <ion-item>
+                <ion-label>
+
+                    <ion-button
+
+                        size="large" (click)="presentAlert()"
+                        mode="ios"
+                        class="btn-primary"
+                        shape="round"
+                        expand="full">Actualizar</ion-button>
+
+                </ion-label>
+            </ion-item>
+        </ion-list>
+
+    </form>
+</ion-content> -->
