@@ -20,36 +20,70 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>  Caracteristicas</ion-title>
+        <ion-title> Caracteristicas</ion-title>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
-   
+
     <!-- <ion-header collapse="condense">
         <ion-toolbar>
             <ion-title size="large">Caracteristicas</ion-title>
         </ion-toolbar>
     </ion-header> -->
-
-
-    <ion-grid>
+    <!-- <ion-grid>
         <ion-row>
-            <ion-col class="color1" size="12" size-lg="4" *ngFor="let char of Characters">
+            <ion-col class="color1" size="12" size-lg="4" *ngFor="let char of data">
                 <ion-card class="ion-card">
 
                     <ion-card-header>
 
-                        <ion-card-title color="primary">{{char.usuario}}</ion-card-title>
-                        <ion-card-title color="warning">{{char.nombre}}</ion-card-title>
-                        <ion-card-title color="danger">{{char.apellido}}</ion-card-title>
+                        <ion-card-title color="primary">{{char.idCuenta}}</ion-card-title>
+                        <ion-card-title color="warning">{{char.saldo}}</ion-card-title>
+                        <ion-card-title color="danger">{{char.socio.cedulaSocio}}</ion-card-title>
+                        <ion-card-title color="danger">{{char.socio.nombresSocio}}</ion-card-title>
+                        <ion-card-title color="danger">{{char.tipoCuenta}}</ion-card-title>
                     </ion-card-header>
 
                 </ion-card>
             </ion-col>
         </ion-row>
-    </ion-grid>
+    </ion-grid> -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    
+    <ion-card *ngFor="let char of data">
+        <ion-card-header>
+
+
+            <ion-card-title>Hola {{char.socio.nombresSocio}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-item>
+            <ion-icon name="cash-outline" slot="start"></ion-icon>
+
+            <ion-label>Saldo Disponible $ {{char.saldo}}</ion-label>
+
+        </ion-item>
+
+        <ion-item>
+
+
+
+        </ion-item>
+
+        <ion-item>
+            <ion-icon name="wallet-outline" slot="start"></ion-icon>
+            <ion-label>Tipo de Cuenta</ion-label>
+            <ion-label> {{char.tipoCuenta}}</ion-label>
+
+        </ion-item>
+
+
+    </ion-card>
 
 
 </ion-content>
+

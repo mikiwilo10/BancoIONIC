@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-welcome',
@@ -9,14 +10,16 @@ import { Router } from '@angular/router';
 export class WelcomePage implements OnInit {
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, public menuCtrl: MenuController) { }
 
- 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
   ngOnInit() {
 
     setTimeout(() => {
     this.router.navigateByUrl('login');
-    },400);
+    },500);
   }
 
 }

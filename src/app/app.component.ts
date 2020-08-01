@@ -29,12 +29,17 @@ export class AppComponent implements OnInit {
     {
       title: 'Cuenta',
       url: '/cuenta',
-      icon: 'reorder-four'
+      icon: 'wallet'
     },
     {
       title: 'Cuotas',
       url: '/folder/Archived',
-      icon: 'archive'
+      icon: 'book'
+    },
+    {
+      title: 'Trasferencia',
+      url: '/transferencia',
+      icon: 'card'
     },
 
     {

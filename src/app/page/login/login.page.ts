@@ -21,12 +21,13 @@ export class LoginPage implements OnInit {
   ip:string = "localhost:8080";
   dat:String;
   datos:any={};
+  private loading;
 
   Parametro:String='';
   constructor(
     //mk
     public navCtrl: NavController, 
-    private javaservi:JavaserviceService,
+    private javaservi:JavaserviceService, private loadingController: LoadingController,
     public menuCtrl: MenuController,public router:Router, public http: HttpClient, private alertController: AlertController 
   ) { 
     
@@ -39,6 +40,36 @@ export class LoginPage implements OnInit {
    }
    
   ngOnInit() {
+  }
+
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 2000
+    });
+   
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+
+
+  myoading() {
+    this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Iniciando Seseion'
+    }).then((overlay =>{
+this.loading=overlay;
+this.loading.present();
+    }));
+    setTimeout(() => {
+      this.loading.dismiss();
+      this.router.navigate(['/cuenta']);
+    }, 1500);
+
   }
 
 
@@ -62,14 +93,6 @@ export class LoginPage implements OnInit {
      this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/admin?usuario='+this.datos.usuario+'&password='+this.datos.clave).subscribe(data => {
        console.log("hola")
      })
-      //   if (data === null) {
-      //  //   this.presentAlert();
-      //   } else {
-      //   //  this.router.navigate(['/principal']);
-      //   }
-      // },
-    
-
   } 
 
   async presentAlert() {
@@ -78,24 +101,33 @@ export class LoginPage implements OnInit {
       message: 'Credenciales incorrectas',
       buttons: ['OK']
     });
-
+  
     await alert.present();
   }
+
+
+  
   public login() {
-  const extra: NavigationExtras= {
+ 
+    const extra: NavigationExtras= {
     queryParams:{
       em:this.datos.usuario
     }
   };
+  
     return new Promise(resolve => {
       this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/logins?usuario='+this.datos.usuario+'&password='+this.datos.clave).subscribe(data => {
       console.log(data);  
       this.javaservi.CorreoSocio=this.datos.usuario;
       if (data == null) {
-          this.presentAlert();
+         
+        this.presentAlert();
+         
           console.log("aui");  
         } else {
-          this.router.navigate(['/cuenta']);
+       // this.presentLoading()
+         // this.router.navigate(['/cuenta']);
+         this.myoading();
           console.log("toy");  
         }
       }, () => {
