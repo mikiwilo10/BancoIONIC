@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NavController, AlertController, LoadingController, ModalController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { NavController, AlertController, LoadingController, ModalController, NavParams } from '@ionic/angular';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import {  MenuController } from '@ionic/angular';
+import { JavaserviceService } from 'src/app/service/javaservice.service';
 
 
 @Component({
@@ -20,10 +21,18 @@ export class LoginPage implements OnInit {
   ip:string = "localhost:8080";
   dat:String;
   datos:any={};
+
+  Parametro:String='';
   constructor(
     //mk
-    public navCtrl: NavController, public menuCtrl: MenuController,public router:Router, public http: HttpClient, private alertController: AlertController 
-  ) { }
+    public navCtrl: NavController, 
+    private javaservi:JavaserviceService,
+    public menuCtrl: MenuController,public router:Router, public http: HttpClient, private alertController: AlertController 
+  ) { 
+    
+    this.Parametro=this.datos.usuario;
+    
+  }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
@@ -35,13 +44,15 @@ export class LoginPage implements OnInit {
 
 
   click() {
+   // this.navCtrl.navigateRoot();
+    // push('RegisterPage');
     
     console.log("click");
     
     console.log("usuario",this.datos.usuario);
-    console.log("clave",this.datos.clave);
+    console.log("clave",this.Parametro=this.datos.usuario);
     
-   
+  
   }
 
   public login2() {
@@ -71,10 +82,15 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
   public login() {
-  
+  const extra: NavigationExtras= {
+    queryParams:{
+      em:this.datos.usuario
+    }
+  };
     return new Promise(resolve => {
       this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/logins?usuario='+this.datos.usuario+'&password='+this.datos.clave).subscribe(data => {
       console.log(data);  
+      this.javaservi.CorreoSocio=this.datos.usuario;
       if (data == null) {
           this.presentAlert();
           console.log("aui");  
