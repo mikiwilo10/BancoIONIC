@@ -9,7 +9,9 @@ import {APIURL} from '../../environments/BancoApi';
   providedIn: 'root'
 })
 export class JavaserviceService {
-CorreoSocio:String;
+
+  Socio:any;
+  CuentoOrigenSocio:any;
 
   constructor(
     //mk

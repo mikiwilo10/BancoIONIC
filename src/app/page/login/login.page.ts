@@ -4,6 +4,7 @@ import { NavController, AlertController, LoadingController, ModalController, Nav
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import {  MenuController } from '@ionic/angular';
 import { JavaserviceService } from 'src/app/service/javaservice.service';
+import { NgForOf } from '@angular/common';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class LoginPage implements OnInit {
   ip:string = "localhost:8080";
   dat:String;
   datos:any={};
+  DatosSocio:any=[];
+
   private loading;
 
   Parametro:String='';
@@ -60,7 +63,7 @@ export class LoginPage implements OnInit {
   myoading() {
     this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Iniciando Seseion'
+      message: 'Iniciando Sesion'
     }).then((overlay =>{
 this.loading=overlay;
 this.loading.present();
@@ -117,8 +120,24 @@ this.loading.present();
   
     return new Promise(resolve => {
       this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/logins?usuario='+this.datos.usuario+'&password='+this.datos.clave).subscribe(data => {
-      console.log(data);  
-      this.javaservi.CorreoSocio=this.datos.usuario;
+      //console.log(data); 
+      this.DatosSocio=data;
+      
+
+
+      resolve(data); //agrega esta linea
+      // this.DatosSocio=JSON.parse(data);
+      // for(let k in this.empleados){ 
+      //   console.log(this.empleados[k].nombres);
+      //   console.log(this.empleados[k].turno.descripcion);
+      // }
+
+      this.javaservi.Socio=this.DatosSocio;
+    
+
+     // console.log(this.DatosSocio); 
+  
+     // this.javaservi.Socio='0302603493';
       if (data == null) {
          
         this.presentAlert();

@@ -4,16 +4,16 @@ ion-content>ion-list {
 }
 
 
-// ion-content {
-//     --background: url(../../../assets/Jupiter.jpg)no-repeat center center / cover;
-// }
+ion-content {
+   // --background: url(../../../assets/Jupiter.jpg)no-repeat center center / cover;
+}
 
 .btn-center-aling {
     text-align: center!important;
 }
 
 .btn-center-aling ion-button {
-    --color: rgb(150, 11, 11);
+    --color: rgb(150, 11, 104);
 }
 
 .btn-center-aling ion-button:hover {
@@ -21,14 +21,35 @@ ion-content>ion-list {
 }
 
 ion-item {
-  //  --background: transparent;
-    color: #0717f1;
+    --background: transparent;
+    color: #07f1be;
     --min-height: 40px;
 }
 
 ion-list {
     background-color: transparent;
 }
+
+
+ion-button {
+    --background:#ffcc66;
+}
+
+.horizontal{
+    display: flex;
+    justify-content: center;
+
+}
+.vertical{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+img{
+    width: 175px; height: 175px;
+}
+
 
 :host {
     --min-height: 30px;

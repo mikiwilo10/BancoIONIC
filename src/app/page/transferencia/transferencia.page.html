@@ -1,11 +1,57 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title> Transferencia</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Transferencia</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+
 <ion-content>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Cuenta Origen</ion-label>
+
+      <ion-input type="text"
+        disabled="true" [(ngModel)]="CuentaOrigen"
+        clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position='floating'>Cuenta Destino</ion-label>
+      <ion-input
+        type="text" [(ngModel)]="CuentaDestino"
+        clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label></ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position='floating'>Valor a transferir $</ion-label>
+      <ion-input type="text" [(ngModel)]="ValosTrsnsferir"
+        clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+
+        <ion-button
+
+          size="large" (click)="Transferencia()" mode="ios"
+          class="btn-primary"
+          shape="round"
+          expand="full">Transferir</ion-button>
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

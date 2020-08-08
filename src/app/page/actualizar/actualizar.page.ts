@@ -71,6 +71,10 @@ export class ActualizarPage implements OnInit {
 
     await alert.present();
   }
+
+
+
+
   public actualizar() {
   
     return new Promise(resolve => {
@@ -131,4 +135,7 @@ export class ActualizarPage implements OnInit {
 
     await alert.present();
   }
+
+
+  
 }

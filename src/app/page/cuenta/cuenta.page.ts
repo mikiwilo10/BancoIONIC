@@ -17,9 +17,9 @@ export class CuentaPage  {
   Characters:any=[];
   data:any=[];
   CorreoSocio:String;
-
+  IdCuenta:any={};
   correo='';
-  cedula='0302603493';
+  cedula='';
 
   constructor(
     //mk
@@ -37,8 +37,14 @@ export class CuentaPage  {
     //   console.log("ppp"+this.correo)
     // });
 
-    this.CorreoSocio= this.javaservi.CorreoSocio;
-    console.log("aqui va el socio"+this.CorreoSocio)
+    //this.cedula= this.javaservi.Socio;
+    
+    //console.log(this.cedula)
+    this.CorreoSocio= this.javaservi.Socio;
+    //console.log(this.CorreoSocio['cedulaSocio']);
+
+    
+    this.cedula=this.CorreoSocio['cedulaSocio'];
 
    }
 
@@ -52,19 +58,19 @@ export class CuentaPage  {
 
  
 
-  getApiJAVA() {
+  // getApiJAVA() {
 
 
-    this.javaservi.getAPIJAVA().subscribe(javaa => {
-    this.Characters=javaa;
+  //   this.javaservi.getAPIJAVA().subscribe(javaa => {
+  //   this.Characters=javaa;
     
-    console.log(this.Characters);
-  //  console.log("hola" +this.datos.usuario);
-   // this.Java=javaa;
-    //console.log(this.Java.nombre);
-    //  console.log("emelec");
-   })
-  }
+  //   console.log(this.Characters);
+  // //  console.log("hola" +this.datos.usuario);
+  //  // this.Java=javaa;
+  //   //console.log(this.Java.nombre);
+  //   //  console.log("emelec");
+  //  })
+  // }
 
   CuentaSocio(){
     
@@ -82,15 +88,20 @@ export class CuentaPage  {
    
      
   this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
-      console.log(data);  
+     //  console.log(data);  
       this.data=data;
+     // this.javaservi.CuentoOrigenSocio=this.data['idCuenta'];
+      this.IdCuenta=data;
+    console.log(this.IdCuenta[0]['idCuenta']);
+    
+    this.javaservi.CuentoOrigenSocio=this.IdCuenta[0]['idCuenta'];
       
         if (data == null) {
            
-            console.log("aui");  
+            console.log("vacio");  
           } else {
            
-            console.log("toy");  
+            console.log("Con Datos");  
           }
         }
         );

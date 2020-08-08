@@ -38,25 +38,35 @@
 
 
 <ion-content padding>
+    
+    
+    
+   
+        <div class="horizontal">
+            <div class="vertical">
+                <img src="../../../assets/debian.png" />   
+            </div>
+                
+        </div>
+      
     <ion-list>
 
-        <ion-item>
+        <!-- <ion-item>
             <ion-row>
                 <ion-col>
-                    <ion-avatar>
-                    <div text-center>
-                        <img src="../../../assets/debian.png" />
-                    
-                    </div>
-                    </ion-avatar>
+                   <ion-avatar>
+ 
+ 
+ 
+                </ion-avatar>
+    
                 </ion-col>
             </ion-row>
+        </ion-item> -->
 
-
-        </ion-item>
         <ion-item>
             <ion-label position="stacked">
-                <ion-icon name="mail" item-start></ion-icon>
+                <ion-icon name="mail-outline" item-start></ion-icon>
             </ion-label>
             <ion-input autocomplete="off" [(ngModel)]="datos.usuario" placeholder="Correo Electronico" type="text"></ion-input>
         </ion-item>
@@ -68,7 +78,7 @@
             <ion-input autocomplete="off" [(ngModel)]="datos.clave" type="password" placeholder="Contraseña"></ion-input>
         </ion-item>
 
-        <ion-button expand="block" share="round" (click)="login()" color="danger">Iniciar Sesion</ion-button>
+        <ion-button expand="block" share="round" (click)="login()">Iniciar Sesion</ion-button>
     </ion-list>
    
 </ion-content>

@@ -11,10 +11,20 @@ ion-avatar {
     padding: 40px;
 }
 
+
+img{
+    width: 200px; height: 200px;
+}
+
 .btn-primary{
     height: 60px;
    
 }
 ion-button{
     color: #2DDCDC;
+}
+
+ion-toolbar {
+    --ion-background-color: #ffcc66;
+    text-align: center;
 }
