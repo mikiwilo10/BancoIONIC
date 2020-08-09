@@ -12,6 +12,7 @@ export class JavaserviceService {
 
   Socio:any;
   CuentoOrigenSocio:any;
+  CreditoID:any;
 
   constructor(
     //mk

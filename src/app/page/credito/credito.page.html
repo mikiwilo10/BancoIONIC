@@ -1,10 +1,47 @@
-<app-header></app-header>
-<!-- <ion-header>
+<!--<app-header></app-header>
+ <ion-header>
   <ion-toolbar>
     <ion-title>Credito</ion-title>
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
 
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Estado Credito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let char of DatosSocio">
+   
+    <ion-card-header>
+      <ion-card-title>Creditos {{char.idCredito}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-item>
+      <ion-icon name="calculator-outline" slot="start"></ion-icon>
+      <ion-label>Interes {{char.interes}}</ion-label>
+    </ion-item>
+   
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>Meses de Plazo  {{char.plazoMeses}}</ion-label>
+    </ion-item>
+    
+    <ion-item>
+      <ion-icon name="reader-outline" slot="start"></ion-icon>
+      <ion-label>Tipo de Credito{{char.tipoCredito}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="cash-outline" slot="start"></ion-icon>
+      <ion-label>Valor Credito ${{char.valorCredito}}</ion-label>
+    </ion-item>
+
+  </ion-card>
 </ion-content>
