@@ -46,7 +46,7 @@ export class TransferenciaPage implements OnInit {
   public Transferir() {
 
 //this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/transferir/?idCuentaOrigen=' + this.CuentaOrigen + '&idCuentaDestino=' + this.CuentaDestino + '&cantidad=' + this.ValosTrsnsferir).subscribe(data => {
-  this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/transferir/?idCuentaOrigen=' + this.CuentaOrigen + '&idCuentaDestino=' + this.CuentaDestino + '&cantidad=' + this.ValosTrsnsferir).subscribe(data => {
+  this.http.get('http://35.199.104.83:8080/Banco/ws/movimientos/transferir/?idCuentaOrigen=' + this.CuentaOrigen + '&idCuentaDestino=' + this.CuentaDestino + '&cantidad=' + this.ValosTrsnsferir).subscribe(data => {
          
       if (data == null) {
 

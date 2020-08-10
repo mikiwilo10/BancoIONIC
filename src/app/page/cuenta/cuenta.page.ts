@@ -88,7 +88,7 @@ export class CuentaPage  {
    
      
   //this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
-    this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
+    this.http.get('http://35.199.104.83:8080/Banco/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
     
   //  console.log(data);  
       this.data=data;

@@ -4,9 +4,13 @@ ion-content>ion-list {
 }
 
 
+// ion-content {
+//    // --background: url(../../../assets/Jupiter.jpg)no-repeat center center / cover;
+// }
+
 ion-content {
-   // --background: url(../../../assets/Jupiter.jpg)no-repeat center center / cover;
-}
+    background-color: #07f1be;
+ }
 
 .btn-center-aling {
     text-align: center!important;

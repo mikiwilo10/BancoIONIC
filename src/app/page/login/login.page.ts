@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   email: string
   clave: string;
   // ip:string = "192.168.1.12:8080";
-  ip: string = "localhost:8080";
+  //ip: string = "localhost:8080";
   dat: String;
   datos: any = {};
   DatosSocio: any = [];
@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.menuCtrl.enable(true);
+    this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
@@ -89,14 +89,14 @@ export class LoginPage implements OnInit {
 
   }
 
-  public login2() {
+  // public login2() {
 
-    //   return new Promise(resolve => {
-    //http://127.0.0.1:8080/Login/ws/movimientos/admin?usuario=miki&password=cuenca
-    this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/admin?usuario=' + this.datos.usuario + '&password=' + this.datos.clave).subscribe(data => {
-      console.log("hola")
-    })
-  }
+  //   //   return new Promise(resolve => {
+  //   //http://127.0.0.1:8080/Login/ws/movimientos/admin?usuario=miki&password=cuenca
+  //   this.http.get('https://35.199.104.83:8080/Banco/ws/movimientos/admin?usuario=' + this.datos.usuario + '&password=' + this.datos.clave).subscribe(data => {
+  //     console.log("hola")
+  //   })
+  // }
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -120,7 +120,7 @@ export class LoginPage implements OnInit {
 
     return new Promise(resolve => {
       //this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/logins?usuario='+this.datos.usuario+'&password='+this.datos.clave).subscribe(data => {
-      this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/logins?usuario=' + this.datos.usuario + '&password=' + this.datos.clave).subscribe(data => {
+      this.http.get('http://35.199.104.83:8080/Banco/ws/movimientos/logins?usuario=' + this.datos.usuario + '&password=' + this.datos.clave).subscribe(data => {
         //console.log(data); 
         this.DatosSocio = data;
 

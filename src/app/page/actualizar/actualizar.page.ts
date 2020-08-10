@@ -100,7 +100,7 @@ export class ActualizarPage implements OnInit {
     return new Promise(resolve => {
 
      // this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
-      this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
+      this.http.get('http://35.199.104.83:8080/Banco/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
       
      console.log(data);  
      

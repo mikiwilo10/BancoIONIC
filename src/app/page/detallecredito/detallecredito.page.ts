@@ -29,7 +29,7 @@ export class DetallecreditoPage implements OnInit {
 
     //http://localhost:8080/Login/ws/movimientos/transferir?idCuentaOrigen=581181519168&idCuentaDestino=155426733963&cantidad=12.8
     //this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/Credito?cedula=' + this.CuentaOrigen).subscribe(data => {
-    this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/DetalleCredito?idcuenta=' + this.CuentaOrigen).subscribe(data => {
+    this.http.get('http://35.199.104.83:8080/Banco/ws/movimientos/DetalleCredito?idcuenta=' + this.CuentaOrigen).subscribe(data => {
 
       console.log(data); 
 
