@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
+  },
+  {
+    path: 'detallecredito',
+    loadChildren: () => import('./page/detallecredito/detallecredito.module').then( m => m.DetallecreditoPageModule)
   }
 ];
 

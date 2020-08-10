@@ -32,8 +32,8 @@ export class AppComponent implements OnInit {
       icon: 'wallet'
     },
     {
-      title: 'Cuotas',
-      url: '/folder/Archived',
+      title: 'Cuotas Credito',
+      url: '/detallecredito',
       icon: 'book'
     },
     {

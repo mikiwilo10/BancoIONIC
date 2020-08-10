@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JavaserviceService } from 'src/app/service/javaservice.service';
 import { HttpClient } from '@angular/common/http';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transferencia',
@@ -14,10 +15,12 @@ export class TransferenciaPage implements OnInit {
   CuentaOrigen: String;
   CuentaDestino: String = '';
   ValosTrsnsferir: String = '';
+  private loading;
 
   constructor(
     private javaservi: JavaserviceService,
-    private http: HttpClient,
+    private http: HttpClient, private loadingController: LoadingController,
+    public menuCtrl: MenuController,public router:Router,
     private alertController: AlertController
   ) { }
 
@@ -25,12 +28,26 @@ export class TransferenciaPage implements OnInit {
     this.CuentaOrigen = this.javaservi.CuentoOrigenSocio;
   }
 
+  myoading() {
+    this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Realizando Transferencia'
+    }).then((overlay => {
+      this.loading = overlay;
+      this.loading.present();
+    }));
+    setTimeout(() => {
+      this.loading.dismiss();
+     // this.router.navigate(['/login']);
+    }, 1500);
+
+  }
 
   public Transferir() {
 
-    //http://localhost:8080/Login/ws/movimientos/transferir?idCuentaOrigen=581181519168&idCuentaDestino=155426733963&cantidad=12.8
-    this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/transferir/?idCuentaOrigen=' + this.CuentaOrigen + '&idCuentaDestino=' + this.CuentaDestino + '&cantidad=' + this.ValosTrsnsferir).subscribe(data => {
-       
+//this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/transferir/?idCuentaOrigen=' + this.CuentaOrigen + '&idCuentaDestino=' + this.CuentaDestino + '&cantidad=' + this.ValosTrsnsferir).subscribe(data => {
+  this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/transferir/?idCuentaOrigen=' + this.CuentaOrigen + '&idCuentaDestino=' + this.CuentaDestino + '&cantidad=' + this.ValosTrsnsferir).subscribe(data => {
+         
       if (data == null) {
 
         console.log("vacio");
@@ -76,6 +93,7 @@ export class TransferenciaPage implements OnInit {
           handler: () => {
 
             console.log('Confirm Okay');
+            this.myoading();
             this.Transferir();
             this.CuentaDestino = '';
             this.ValosTrsnsferir = '';

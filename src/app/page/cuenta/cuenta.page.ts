@@ -87,8 +87,10 @@ export class CuentaPage  {
   public login() {
    
      
-  this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
-     //  console.log(data);  
+  //this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
+    this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/CuentaSocio?cedula='+this.cedula).subscribe(data => {
+    
+  //  console.log(data);  
       this.data=data;
      // this.javaservi.CuentoOrigenSocio=this.data['idCuenta'];
       this.IdCuenta=data;

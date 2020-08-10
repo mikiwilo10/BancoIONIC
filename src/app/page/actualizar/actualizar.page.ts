@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //mk
 import { HttpClient } from '@angular/common/http';
-import { NavController, AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { NavController, AlertController, LoadingController, ModalController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -19,7 +19,7 @@ export class ActualizarPage implements OnInit {
   ip:string = "localhost:8080";
   dat:String;
   datos:any={};
-
+  private loading;
 
   persona={
     email:'',
@@ -27,7 +27,9 @@ export class ActualizarPage implements OnInit {
   }
   
  // http://localhost:8080/Login/ws/movimientos/Updtelogin/{email:String}/{clave:String}
-  constructor(public navCtrl: NavController, public router:Router, public http: HttpClient, private alertController: AlertController ) {}
+  constructor(public navCtrl: NavController,
+    private loadingController: LoadingController,
+    public menuCtrl: MenuController, public router:Router, public http: HttpClient, private alertController: AlertController ) {}
 
   ngOnInit() {
   }
@@ -45,7 +47,7 @@ export class ActualizarPage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             console.log('Confirm Cancel');
-           // this.router.navigate(['/cuenta']);
+           
            this.usuario='';
               this.clave='';
           }
@@ -59,6 +61,8 @@ export class ActualizarPage implements OnInit {
               
             // } else {
              console.log('Confirm Okay');
+          //  this.router.navigate(['/login']);
+          this.myoading();
             this.actualizar();
            this.usuario='';
                this.clave='';
@@ -74,23 +78,43 @@ export class ActualizarPage implements OnInit {
 
 
 
+  
+  myoading() {
+    this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Actualizando Contraseña'
+    }).then((overlay => {
+      this.loading = overlay;
+      this.loading.present();
+    }));
+    setTimeout(() => {
+      this.loading.dismiss();
+      this.router.navigate(['/login']);
+    }, 1500);
+
+  }
+
 
   public actualizar() {
   
     return new Promise(resolve => {
 
-      this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
-      console.log(data);  
+     // this.http.get('http://127.0.0.1:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
+      this.http.get('http://192.168.1.39:8080/Login/ws/movimientos/Updtelogin?email='+this.usuario+'&clave='+this.clave).subscribe(data => {
+      
+     console.log(data);  
      
-      // if (data =! null) {
-      //     this.presentAlert();
-      //     this.router.navigate(['/cuenta']);
-      //     console.log("aui");  
-      //   } else {
-      //     this.router.navigate(['/cuenta']);
-      //     console.log("toy");  
-      //   }
+    //  if (data == null) {
 
+    //   //this.presentAlert();
+
+    //   //console.log("aui");
+    // } else {
+    //   // this.presentLoading()
+    //   // this.router.navigate(['/cuenta']);
+    //   this.myoading();
+    //   //console.log("toy");
+    // }
         
       }, () => {
        // this.presentAlert();
